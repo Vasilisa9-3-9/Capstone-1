@@ -1,0 +1,110 @@
+
+import math
+
+# give a definition of what an "investment" is 
+
+print("investment - to calculate the amount of interest you'll earn on your invesment.")
+
+# give a definition of what a "bond" is 
+
+print("bond       - to calculate the amount you'll have to pay on a home loan")
+
+print ("\n")
+
+# ask the user for input choice of either investment / bond
+
+investment_or_bond = input("Enter either 'investment' or 'bond' from the menu above to proceed: ")
+
+print("\n")
+
+if investment_or_bond.lower() in "bond":
+
+    print("\n")
+
+    #ask the user to input the value of the house 
+
+    value_of_the_house = input("Please input the value of the house: ")
+
+    print("\n")
+
+    #ask the user to input the interst rate, specify that no "%" sign should be added in the answer 
+
+    interest_rate = float(input("Please enter the interst rate, as a percentage, no need to to input %: "))
+    interest_rate = float((interest_rate)/100)/12
+    print("Your interest rate is equal to:")
+    print(float(interest_rate))
+
+    print("\n")
+
+    #ask the user to input the number of months needed by them to repay the bond 
+
+    repay_time = input("Please enter the number of months you plan to take to repay the bond: ")
+
+    print("\n")
+
+    #using the bond repayment formula, calculate how much money the user has to repay each month 
+
+    repayment_amount = (float(interest_rate) * float(value_of_the_house)) / (1-(1 + float(interest_rate))**(-float(repay_time)))
+
+    print("\n")
+
+    #print out this amount for the user to see
+
+    print ("The amount you have to repay each month is: ")
+    print(float(round(repayment_amount,2)))
+
+elif investment_or_bond.lower() in "investment":
+
+    print("\n")
+
+    #ask the user to input the amount of money they wish to deposit 
+
+    deposit = input("Please enter the amount of money you are depositing: ")
+    
+    print("\n")
+
+    #ask the user to input the interst rate, specify that no "%" sign should be added in the answer 
+
+    interest_rate = float(input("Please enter the interst rate, as a percentage, no need to to input %: "))
+    interest_rate = (float(interest_rate)/100)
+    print("Your interest rate is equal to:")
+    print(float(interest_rate))
+
+    print("\n")
+
+    #ask the user to input the number of years they are planing on investing
+
+    years_investing = input("Please enter the number of years you plan on investing: ")
+
+    print("\n")
+
+    #ask the user to chose between "simple" and "compound" investmnet type 
+
+    interest = input("Please chose between 'simple' or 'compound' investment type: ")
+    if interest == "simple":
+
+        #using the specific formula calculate the total amount the user will be getting back 
+
+        total_amount = float(deposit) * (1 + ((float(interest_rate)/100) * float(years_investing)))
+
+        print("\n")
+
+        #print the total amount 
+
+        print ("This is the amount you will be getting back, after the entered period, at the specified interest rate: ")
+        print(float(round(total_amount,2)))
+    elif interest == "compound":
+
+        #using the specific formula calculate the total amount the user will be getting back 
+
+        total_amount = float(deposit) * math.pow((1+(float(interest_rate)/100)),float(years_investing))
+
+        print("\n")
+
+        #print the total amount 
+
+        print ("This is the amount you will be getting back, after the entered period, at the specified interest rate: ")
+        print(float(round(total_amount,2)))
+else:
+    print("You haven't chosen anything.")
+
